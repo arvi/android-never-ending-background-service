@@ -1,8 +1,12 @@
 package com.arvi.neverendingbackgroundservice;
 
 import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +29,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.SHARED_PREF), MODE_PRIVATE);
+
+        if("huawei".equalsIgnoreCase(android.os.Build.MANUFACTURER) && ! sharedPreferences.getBoolean(getString(R.string.PREF_IS_PROTECTED_APPS), false)) {
+            AlertDialog.Builder builder  = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.huawei_title).setMessage(R.string.huawei_text)
+                    .setPositiveButton(R.string.go_to_protected, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent();
+                            intent.setComponent(new ComponentName("com.huawei.systemmanager", "com.huawei.systemmanager.optimize.process.ProtectActivity"));
+                            startActivity(intent);
+                            SharedPreferences.Editor editor = getSharedPreferences(getString(R.string.SHARED_PREF), MODE_PRIVATE).edit();
+                            editor.putBoolean(getString(R.string.PREF_IS_PROTECTED_APPS),true).commit();
+                        }
+                    }).create().show();
+        }
 
         finishButton = findViewById(R.id.finishButton);
 

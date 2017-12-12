@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NeverEndingBackgroundService</string>
+    <string name="huawei_title">Huawei Permission Request</string>
+    <string name="huawei_text">Allow app to listen to incoming messages</string>
+    <string name="go_to_protected">Go to Protected Apps</string>
+    <string name="SHARED_PREF" translatable="false">APP_SHARED_PREF</string>
+    <string name="PREF_IS_PROTECTED_APPS" translatable="false">PREF_IS_PROTECTED_APPS</string>
 </resources>

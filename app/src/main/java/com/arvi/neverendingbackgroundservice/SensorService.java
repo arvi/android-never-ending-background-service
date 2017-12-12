@@ -3,12 +3,18 @@ package com.arvi.neverendingbackgroundservice;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+
+import java.util.Calendar;
 
 /**
  * Created by arvi on 12/11/17.
@@ -69,20 +75,8 @@ public class SensorService extends Service {
     @Override
     public void onTaskRemoved(Intent rootIntent) {
         Log.i(TAG, "serviceonTaskRemoved()");
-/*
-        if("huawei".equalsIgnoreCase(android.os.Build.MANUFACTURER) && !sp.getBoolean("protected",false)) {
-            AlertDialog.Builder builder  = new AlertDialog.Builder(this);
-            builder.setTitle(R.string.huawei_title).setMessage(R.string.huawei_text)
-                    .setPositiveButton(R.string.go_to_protected, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Intent intent = new Intent();
-                            intent.setComponent(new ComponentName("com.huawei.systemmanager", "com.huawei.systemmanager.optimize.process.ProtectActivity"));
-                            startActivity(intent);
-                            sp.edit().putBoolean("protected",true).commit();
-                        }
-                    }).create().show();
-        } */
+
+
 
         // workaround for kitkat: set an alarm service to trigger service again
         Intent intent = new Intent(getApplicationContext(), SensorService.class);
