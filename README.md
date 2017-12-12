@@ -1,8 +1,8 @@
 ### Never Ending Background Service Experiment
 
 #### Desired results:
-Scenario 1. Restart service when app is stopped by Android or via Settings > Running Apps > Stop
-Scenario 2. Restart service when app is stopped via swiping in recent apps
+- Scenario 1. Restart service when app is stopped by Android or via Settings > Running Apps > Stop
+- Scenario 2. Restart service when app is stopped via swiping in recent apps
 
 
 ##### Works in:
@@ -11,7 +11,7 @@ Scenario 2. Restart service when app is stopped via swiping in recent apps
 3. Alcatel Flash Plus 2 - Marshmallow
 
 ##### Not yet working in (bug in scenario 2):
-1. Google Nexus - Oreo
+1. LG Google Nexus 5x - Oreo
 2. Asus Zenfone 2 - Lollipop 21
 3. StarMobile Jump HD - Lollipop 20
 
